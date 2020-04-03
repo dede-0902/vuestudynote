@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // filter
+    const nums = [10,20,30,111,222];
+    let newNums = nums.filter(function(n){
+      return n < 100
+    })
+    console.log(newNums)
+
+    // map
+    let new2Nums = newNums.map(function(n){
+      return n * 2
+    })
+    console.log(new2Nums)
+
+    // total
+    let total = new2Nums.reduce(function(preValue,n){
+      return preValue + n
+    },0)
+    console.log(total)
+
+    // 综上
+    let all = nums.filter(function(n){
+      return n < 100
+    }).map(function(n){
+      return n * 2
+    }).reduce(function(preValue,n){
+      return preValue + n
+    },0)
+    console.log(all)
+
+    // 综上
+    let allTotal = nums.filter(n => n < 100).map(n => n*2).reduce((preValue,n) => preValue+n)
+    console.log(allTotal)
+  </script>
+</body>
+</html>

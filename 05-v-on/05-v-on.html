@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app" >
+    <div @click="allClick">
+      <p>aaaaaaaaaaa</p>
+    </div>
+    
+    <!-- .stop阻止冒泡 -->
+    <button v-on:click.stop="btnClick('abc',$event)">按钮</button>
+
+    <!-- .prevent阻止默认行为 -->
+    <form action="" >
+      <input type="text">
+      <Button @click.prevent="submit">表单提交</Button> 
+    </form>
+
+    <!-- 键修饰符 键别名 -->
+    <input type="text" @keyup.enter="onEnter">
+
+    <input type="text" @keyup.13="onEnter">
+
+    <!-- .once只触发一次回调 -->
+    <button @click.once="doThis">按钮</button>
+  </div>
+  <script src="../js/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el:'#app',
+      data:{
+      },
+      methods: {
+        btnClick(e,event) {
+          console.log(e,event)
+        },
+        allClick() {
+          console.log('allClick')
+        },
+        submit() {
+          console.log("表单提交")
+        },
+        onEnter() {
+          console.log("点回车键了")
+        },
+        doThis() {
+          console.log("点击按钮")
+        }
+      },
+    })
+  </script>
+</body>
+</html>

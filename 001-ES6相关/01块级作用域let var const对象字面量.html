@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- if for没有块级作用域 -->
+  <button>按钮1</button>
+  <button>按钮2</button>
+  <button>按钮3</button>
+  <button>按钮4</button>
+  <script>
+    // var btns = document.getElementsByTagName('button');
+    // for(var i = 0; i < btns.length; i++){
+    //   btns[i].addEventListener('click',function(){
+    //     console.log('第'+i+'个按钮被点击')
+    //   })
+    // }
+    //i结果总是4
+
+    // 解决方法一 闭包(原理是函数有作用域)
+    var btns = document.getElementsByTagName('button');
+    for(var i = 0; i < btns.length; i++){
+      (function(i){
+        btns[i].addEventListener('click',function(){
+          console.log('第'+(i+1)+'个按钮被点击')
+        })
+      })(i)
+    }
+    // 解决方法二 var改成let
+
+  </script>
+</body>
+</html>

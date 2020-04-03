@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <ul>
+      <li v-for="item in movies">{{item}}</li>
+    </ul>
+    <!-- push() -->
+
+    <!-- pop() -->
+
+    <!-- shift() -->
+
+    <!-- unshift() -->
+
+    <!-- splice() -->
+
+    <!-- sort() -->
+
+    <!-- reverse() -->
+
+    <!-- 可变参数 -->
+  </div>
+  <script src="../js/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el:'#app',
+      data:{
+        movies:['A','B','C','D']
+      }
+    })
+
+    function sum(...sum){
+      return sum
+    }
+    console.log(sum(1,2))
+  </script>
+</body>
+</html>

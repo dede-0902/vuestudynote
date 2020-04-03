@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <P>{{message}}</P>
+    <!-- <cpn><button>按钮</button></cpn>
+    <cpn></cpn>
+    <cpn><button>按钮</button><h3>2222222</h3><i>9999999999</i></cpn> -->
+    <!-- <cpn><span slot="center">标题</span></cpn> -->
+    <!-- 父组件替换插槽的标签，用子组件中的数据 -->
+    <cpn>
+      <template slot-scope="slot">
+          <span>{{slot.data}}</span>
+          <span>{{slot.movies.join('-')}}</span>
+      </template>
+    <cpn>
+  </div>
+  <template id="cpn">
+    <div>
+      <!-- <slot><h3>2222222</h3></slot> -->
+      <slot name="left"><span>左边</span></slot>
+      <slot name="center" :data="title"><span>{{title}}</span></slot>
+      <slot name="right"><span>右边</span></slot>
+      <!-- 绑定data的时候，不能添加name属性 -->
+      <slot :movies="movies">
+        <ul>
+          <li v-for="item in movies">{{item}}</li>
+        </ul>
+      </slot>
+    </div>
+  </template>
+  <script src="../js/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el:'#app',
+      data:{
+        message:'dede,hello',
+      },
+      components: {
+        cpn: {
+          template: '#cpn',
+          data() {
+            return {
+              title: 'slot插槽的使用',
+              movies:['A','B','C','D']
+            }
+          }
+        }
+      }
+    })
+  </script>
+</body>
+</html>

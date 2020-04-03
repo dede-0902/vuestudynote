@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .active{
+      color: red;
+    }
+  </style>
+</head>
+<body>
+    <div id="app">
+      <!-- 1.动态绑定src -->
+
+      <!-- 2.动态绑定href -->
+      <a v-bind:href="aHref">动态绑定href</a>
+
+      <!-- 3.动态绑定class（对象语法） -->
+      <h2 :class="{active:isActive}">123</h2>
+
+      <h2 :class="getClasses()">123</h2>
+
+      <!-- 4.动态绑定class（数组语法） -->
+      <h2 :class="[active,'line']">789</h2>
+
+      <h2 :class="getClasses2()">789</h2>
+
+      <!-- 5.动态绑定style（对象语法） -->
+      <h2 :style="{fontSize:'50px',color:finalColor}">456</h2>
+
+      <!-- 6.动态绑定style（对象语法） -->
+      <h2 :style="[baseSize]">456</h2>
+    </div>
+    <script src="../js/vue.js"></script>
+    <script>
+      const app = new Vue({
+        el:'#app',
+        data: {
+          aHref:'http://www.baidu.com',
+          isActive: true,
+          fontSize:'20px',
+          active:'aaaaaa',
+          finalColor:'blue',
+          baseSize:'aaaaaaaa'
+        },
+        methods: {
+          getClasses() {
+            return {active:this.isActive}
+          },
+          getClasses2() {
+            return [this.active,'line']
+          }
+        },
+      })
+    </script>
+</body>
+</html>

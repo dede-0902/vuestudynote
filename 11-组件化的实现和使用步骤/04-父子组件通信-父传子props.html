@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <P>{{message}}</P>
+    <!-- v-bind后不能接驼峰标识 -->
+    <cpn :c-movies="movies" :cmessage="message"></cpn>
+  </div>
+
+  <template id="cpn">
+    <div>
+      <ul>
+        <li v-for="item in cMovies">{{item}}</li>
+      </ul>
+      <h2>{{cmessage}}</h2>
+    </div>
+  </template>
+  <script src="../js/vue.js"></script>
+  <script>
+    const cpn = {
+      template:'#cpn',
+      // props:['cmovies','cmessage']
+      // props:{
+      //   cmovies:Array,
+      //   cmessage:String
+      // }
+      props:{
+        cmessage:{
+          type:String,
+          default:'abc'
+        },
+        // 类型是对象或者是数组，默认值必须是一个函数
+        cMovies:{
+          type:Array,
+          default() {
+            return ['a','b','c']
+          }
+        }
+      }
+    }
+    const app = new Vue({
+      el:'#app',
+      data:{
+        message:'dede,hello',
+        movies:['冰雪奇缘','盗墓笔记','碟中谍','唐人街']
+      },
+      components:{
+        cpn
+      }
+    })
+  </script>
+</body>
+</html>

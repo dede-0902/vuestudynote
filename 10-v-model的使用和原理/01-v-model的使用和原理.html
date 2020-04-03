@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <P>{{message}} {{sex}}{{hobbies}}{{fruit}}{{fruits}}</P>
+    <!-- 双向绑定1 v-model-->
+    <input type="text" v-model="message">
+
+    <!-- 双向绑定2 v-bind:value v-on:input -->
+    <input type="text" v-bind:value="message" v-on:input="valueChange">
+
+    <input type="text" :value="message" @input="message = $event.target.value">
+
+    <!-- textarea和input用法一样 -->
+
+    <!-- v-model结合radio类型使用 -->
+    <label for="male">
+      <input type="radio" v-model="sex" value="男">男
+    </label>
+    <label for="female">
+      <input type="radio" v-model="sex" value="女">女
+    </label>
+
+    <!-- v-model结合checkbox类型使用 -->
+    <!-- 单选框 -->
+    <label for="agree">
+      <input type="checkbox" v-model="isAgree" id="agree">同意协议
+    </label>
+    <button :disabled="!isAgree">下一步</button>
+
+    <!-- 多选框 -->
+    <input type="checkbox" value="篮球" v-model="hobbies">篮球
+    <input type="checkbox" value="足球" v-model="hobbies">足球
+    <input type="checkbox" value="羽毛球" v-model="hobbies">羽毛球
+    <input type="checkbox" value="乒乓球" v-model="hobbies">乒乓球
+
+    <!-- v-model结合select使用(不常用) -->
+    <!-- 选择一个 -->
+    <select name="abc" id="" v-model="fruit">
+      <option value="苹果">苹果</option>
+      <option value="香蕉">香蕉</option>
+      <option value="草莓">草莓</option>
+      <option value="火龙果">火龙果</option>
+    </select>
+
+    <!-- 选择多个 -->
+    <select name="abc" id="" v-model="fruits" multiple>
+      <option value="苹果">苹果</option>
+      <option value="香蕉">香蕉</option>
+      <option value="草莓">草莓</option>
+      <option value="火龙果">火龙果</option>
+    </select>
+  </div>
+  <script src="../js/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el:'#app',
+      data:{
+        message:'456',
+        sex:'男',
+        isAgree:false,
+        hobbies:[],
+        fruit:'香蕉',
+        fruits:[]
+      },
+      methods: {
+        valueChange(event) {
+          this.message = event.target.value
+        }
+      },
+    })
+  </script>
+</body>
+</html>

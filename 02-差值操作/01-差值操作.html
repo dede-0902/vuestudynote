@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    [v-cloak]{
+      display: none;
+    }
+  </style>
+</head>
+<body>
+    <div id="app">
+      <P v-once>{{message}}</P>
+
+      <h2 v-html="link"></h2>
+
+      <h2 v-text="message">的的</h2>
+
+      <h2 v-pre>{{message}}</h2>
+
+      <h2 v-cloak>{{message}}</h2>
+    </div>
+    <script src="../js/vue.js"></script>
+    <script>
+      const app = new Vue({
+        el:'#app',
+        data:{
+          message:'dede,hello',
+          link:'<a href="http://www.baidu.com">我是一个链接</a>'
+        }
+      })
+    </script>
+</body>
+</html>

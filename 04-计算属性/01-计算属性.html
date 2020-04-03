@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <P>{{totalName}}</P>
+    <h2>{{totalPrive}}</h2>
+    <P>{{fullName}}</P>
+  </div>
+  <script src="../js/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el:'#app',
+      data:{
+        firstName:'dede',
+        lastName:'sun',
+        books:[
+          {id:1,name:'盗墓笔记',price:119},
+          {id:2,name:'三生三世',price:39},
+          {id:3,name:'骆驼祥子',price:29},
+        ]
+      },
+      computed: {
+        totalName() {
+          return this.firstName + ' ' + this.lastName
+        },
+        totalPrive() {
+          let result = 0;
+          for(let item of this.books){
+            result += item.price
+          }
+          return result
+        },
+        fullName:{
+          set(newValue) {
+            const names = newValue.split(' ');
+            this.firstName = names[0];
+            this.lastName = names[1];
+          },
+          get() {
+            return this.firstName + ' ' + this.lastName
+          }
+        }
+      },
+    })
+  </script>
+</body>
+</html>

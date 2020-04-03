@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <P>{{message}}</P>
+
+    <!-- 1.lazy -->
+    <input type="text" v-model.lazy="message">
+
+    <!-- 2.number(为什么e能输入) -->
+    <input type="number" v-model.number="message2">
+
+    <!-- 3.trim -->
+    <input type="text" v-model.trim="message3">
+  </div>
+  <script src="../js/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el:'#app',
+      data:{
+        message:'dede,hello',
+        message2:0,
+        message3:''
+      }
+    })
+  </script>
+</body>
+</html>

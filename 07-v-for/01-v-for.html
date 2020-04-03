@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <!-- 遍历数组 -->
+    <ul>
+      <li v-for="item in movies">{{item}}</li>
+    </ul>
+
+    <!-- 遍历对象 -->
+    <ul>
+      <li v-for="(value,key,index) in obj">{{value}}{{key}}{{index}}</li>
+    </ul>
+  </div>
+  <script src="../js/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el:'#app',
+      data:{
+        movies:['A','B','C','D'],
+        obj:{
+          name:'Xukun Cai',
+          age:23,
+          birthMonth:'August'
+        }
+      }
+    })
+  </script>
+</body>
+</html>

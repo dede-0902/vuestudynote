@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <P>{{message}}</P>
+    <cpn @add="add" @sub="sub"></cpn>
+    <h2>点击次数{{total}}</h2>
+  </div>
+  <template id="cpn">
+    <div>
+      <button @click="increment">+1</button>
+      <button @click="decrement">-1</button>
+    </div>
+  </template>
+  <script src="../js/vue.js"></script>
+  <script>
+    const cpn = {
+      template:'#cpn',
+      data() {
+        return {
+          counter:0
+        }
+      },
+      methods: {
+        increment() {
+          this.counter++;
+          this.$emit('add',this.counter)
+        },
+        decrement() {
+          this.counter--
+          this.$emit('sub',this.counter)
+        }
+      },
+    }
+    const app = new Vue({
+      el:'#app',
+      data:{
+        message:'dede,hello',
+        total:0
+      },
+      components: {
+        cpn
+      },
+      methods: {
+        add(c){
+          this.total = c
+        },
+        sub(c) {
+          this.total = c
+        }
+      },
+    })
+  </script>
+</body>
+</html>
